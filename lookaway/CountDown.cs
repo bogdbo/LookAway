@@ -8,13 +8,10 @@ namespace lookaway
 {
   public partial class CountDown : Form
   {
-    private const UInt32 SWP_NOSIZE = 0x0001;
-    private const UInt32 SWP_NOMOVE = 0x0002;
-    private const UInt32 TOPMOST_FLAGS = SWP_NOMOVE | SWP_NOSIZE;
-    private static readonly IntPtr HWND_TOPMOST = new IntPtr(-1);
-    private static readonly IntPtr HWND_NOTOPMOST = new IntPtr(-2);
-    private static readonly IntPtr HWND_TOP = new IntPtr(0);
-    private static readonly IntPtr HWND_BOTTOM = new IntPtr(1);
+    private const uint SwpNosize = 0x0001;
+    private const uint SwpNomove = 0x0002;
+    private const uint TopmostFlags = SwpNomove | SwpNosize;
+    private static readonly IntPtr HwndTopmost = new IntPtr(-1);
     private int duration = 20;
 
     protected override bool ShowWithoutActivation
@@ -38,12 +35,12 @@ namespace lookaway
 
     [DllImport("user32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]
-    public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy,
+    public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int y, int cx, int cy,
       uint uFlags);
 
     private void CountDown_Load(object sender, EventArgs e)
     {
-      SetWindowPos(Handle, HWND_TOPMOST, 0, 0, 0, 0, TOPMOST_FLAGS);
+      SetWindowPos(Handle, HwndTopmost, 0, 0, 0, 0, TopmostFlags);
       BackColor = Color.LimeGreen;
       TransparencyKey = Color.LimeGreen;
       CenterToScreen();

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace lookaway
@@ -14,14 +13,7 @@ namespace lookaway
     {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
-      if (args.Length == 2)
-      {
-        Application.Run(new CountDown(args[0], Int32.Parse(args[1])));
-      }
-      else
-      {
-        Application.Run(new CountDown());
-      }
+      Application.Run(args.Length == 2 ? new CountDown(args[0], int.Parse(args[1])) : new CountDown());
     }
   }
 }
