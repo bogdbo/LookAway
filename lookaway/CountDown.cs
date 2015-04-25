@@ -16,7 +16,7 @@ namespace lookaway
 
     protected override bool ShowWithoutActivation
     {
-      get { throw new NullReferenceException("This is supposed to be breaking"); }
+      get { throw new NullReferenceException("This is asf supposed to be breaking"); }
     }
 
     public CountDown()
